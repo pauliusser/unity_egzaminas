@@ -1,0 +1,46 @@
+:root {
+}
+
+.menu-button {
+    min-width: 200px;
+    font-size: 24px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    display: flex;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+}
+
+.menu-button:hover {
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+.menu-label {
+    font-size: 32px;
+    -unity-font-style: bold;
+    color: rgb(0, 0, 0);
+}
+
+.menu-item {
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.menu-bg-image {
+    background-image: url("project://database/Assets/UI Toolkit/MainMenu/background.png")
+}

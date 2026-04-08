@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour, IDamagable
     public float UpdateInterval = 0.5f;
     private Explosion explosion;
     public GameObject impactEffectPrefab;
+    public int scoreValue = 10;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -37,6 +38,7 @@ public class Enemy : MonoBehaviour, IDamagable
         Debug.Log($"damage: {d.damage} health: {Health} type: {d.type} source: {d.source}");
         if (Health <= 0)
         {
+            GameEvents.OnScored.Invoke(scoreValue);
             Destroy(gameObject);
             //if (d.source.tag == "Player")
             //{

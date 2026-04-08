@@ -2,15 +2,31 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public int money = 100;
+
+    private void OnEnable()
+    {
+        GameEvents.OnScored.Subscribe(AddMoney);
+        GameEvents.OnSpend.Subscribe(SpendMoney);
+    }
+    private void OnDisable()
+    {
+        GameEvents.OnScored.Unsubscribe(AddMoney);
+        GameEvents.OnSpend.Unsubscribe(SpendMoney);
+    }
     void Start()
     {
-        
+        GameEvents.OnGuiUpdate.Invoke(money);
     }
-
-    // Update is called once per frame
-    void Update()
+    private void AddMoney(int amount)
     {
-        
+        money += amount;
+        GameEvents.OnGuiUpdate.Invoke(money);
+    }
+    private void SpendMoney(int amount)
+    {
+        Debug.Log($"Spending {amount} money. Current money: {money}");
+        money -= amount;
+        GameEvents.OnGuiUpdate.Invoke(money);
     }
 }

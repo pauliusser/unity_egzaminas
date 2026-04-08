@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenu/styles.uss?fileID=7433441132597879392&amp;guid=78d00c2dd0dbbe7488efd1ebe5d98eed&amp;type=3#styles" />
+    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.9); align-items: center; justify-content: center;">
+        <ui:Label text="Final Score: 0000" enable-rich-text="true" name="finalScore-label" class="menu-label menu-item" style="color: rgb(255, 255, 255);" />
+        <ui:Label text="GAME OVER" name="GameOver-label" parse-escape-sequences="false" class="menu-label menu-item" style="color: rgb(255, 255, 255);" />
+        <ui:Button text="Restart" name="restart-btn" class="menu-button menu-item" />
+        <ui:Button text="Main Menu" name="MainMenu-btn" class="menu-button menu-item" />
+    </ui:VisualElement>
+</ui:UXML>

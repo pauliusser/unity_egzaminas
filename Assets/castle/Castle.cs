@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Castle : MonoBehaviour, IDamagable
 {
+    public bool debug = false;
     public int maxHealth = 1000;
     public int Health { get; set; }
     public int h = 0;
@@ -19,6 +20,14 @@ public class Castle : MonoBehaviour, IDamagable
         {
             //PlayerEvents.OnPlayerDied.Invoke();
             Destroy(gameObject);
+            GameEvents.OnGameOver.Invoke();
+        }
+    }
+    void Update()
+    {
+        if (debug)
+        {
+            GameEvents.OnGameOver.Invoke();
         }
     }
 }

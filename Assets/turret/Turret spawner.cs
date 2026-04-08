@@ -5,6 +5,22 @@ public class Turretspawner : MonoBehaviour, IClickable
 {
     public GameObject turretPrefab;
     public LayerMask platformLayer;
+    public int price = 50;
+    public int moneyLeft = 0;
+
+    void OnEnable()
+    {
+        GameEvents.OnGuiUpdate.Subscribe(UpdateMoney);
+    }
+    void OnDisable()
+    {
+        GameEvents.OnGuiUpdate.Unsubscribe(UpdateMoney);
+    }
+    void UpdateMoney(int money)
+    {
+        moneyLeft = money;
+        Debug.Log($"Money updated: {moneyLeft}");
+    }
 
     public GameObject SpawnTurret()
     {
@@ -15,10 +31,13 @@ public class Turretspawner : MonoBehaviour, IClickable
 
     void IClickable.OnClick()
     {
-        SpawnTurret();
-        Destroy(gameObject);
+        if (moneyLeft >= price)
+        {
+            SpawnTurret();
+            Destroy(gameObject);
+            GameEvents.OnScored.Invoke(-price);
+        }
     }
-
     private void Update()
     {
         Vector2 mousePos = Mouse.current.position.ReadValue();
@@ -34,11 +53,6 @@ public class Turretspawner : MonoBehaviour, IClickable
         {
             if (((1 << hit.collider.gameObject.layer) & platformLayer) != 0)
             {
-                //Vector3 camPos = Camera.main.transform.position;
-                //Vector3 colliderPos = hit.collider.transform.position;
-                //Vector3 direction = (hit.point - camPos).normalized;
-                //float distance = (camPos - colliderPos).magnitude;
-                //transform.position = camPos + direction * distance;
                 SpawnTurret();
                 Destroy(hit.transform.gameObject);
             }
